@@ -30,8 +30,8 @@ public class Babbling1 {
                     .replaceAll(" ","");
         }
         int cnt=0;
-        for(int j =0; j < babbling.length;j++){
-            if(babbling[j].length()==0) cnt++;
+        for(String str : babbling){
+            if(str.length()==0) cnt++;
         }
         return cnt;
     }
