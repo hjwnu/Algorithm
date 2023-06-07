@@ -1,4 +1,4 @@
-package lv0;
+package Programmers.lv0;
 
 public class Ordered_Pair {
     public static void main(String[] args) {
