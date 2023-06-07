@@ -7,7 +7,7 @@ public class Discount {
         }
     }
     public static int solution(int price) {
-        int answer =0 ;
+        int answer;
 
         if(price >= 500000){
             answer = price*4/5;
