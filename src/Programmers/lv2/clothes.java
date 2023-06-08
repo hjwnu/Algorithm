@@ -33,7 +33,6 @@ public class clothes {
         System.out.println(solution(clothes));
     }
     public static int solution(String[][] clothes) {
-        int answer = clothes.length;
         HashMap<String, Integer> cloth = new HashMap<>();
         for(int i =0; i < clothes.length;i++){
             String key = clothes[i][1];
@@ -41,10 +40,14 @@ public class clothes {
             else { cloth.put(key,1);}
         }
         ArrayList<Integer> arr = new ArrayList<Integer>(cloth.values());
+        int temp=1;
+        System.out.println(cloth);
+        System.out.println(arr);
         for(int i =0; i < arr.size();i++){
-//            0+1+2 + 0*1+0*2+1*2 + 0*1*2 미완성. (조합이나 순열) arr의 부분집합의 요소를 곱한 값의 합을 구현해야 함.
-
+//            0+1+2 + 0*1+0*2+1*2 + 0*1*2 미완성. (조합이나 순열) arr의 부분집합의 요소를 곱한 값의 합을 구현해야 함
+            temp *= (arr.get(i)+1);
+// -> 각각에 선택하지 않는 경우의 수 1을 추가하여 모두 곱하고, 모든걸 선택하지 않는 경우의 수 1을 뺌으로서 조합없이 간단하게 구현
         }
-        return answer;
+        return temp-1;
         }
  }
