@@ -23,15 +23,15 @@ public class PhoneNumberList {
         String[] b = {"123", "1246", "1234", "1235"};
         String[] c = {"119", "97674223", "1195524421"};
         String[] d = {"123","456", "7123"};
-        System.out.println(solution(b));
+        System.out.println(solution(c));
     }
 
-    public boolean solution(String[] phoneBook) {
+    public static boolean solution(String[] phoneBook) {
 
         Arrays.sort(phoneBook); // 접두어를 찾는 문제이므로, 오름차순으로 정렬하면 가장 근접해 있을 것이다.
         boolean result = true;
 
-        for (int i = 0; i < phoneBook.length -1 ; i++){
+        for (int i = 0; i < phoneBook.length -1 ; i++){ // 성공하긴 했으나, solution3에서의 로직보다 시간복잡도가 한참 떨어진다. 추후 solution3의 로직을 보강할 수 없는지 조금 더 고민해보려고 한다.
             if(phoneBook[i + 1].startsWith(phoneBook[i])){result = false; break;}
         }
         return result;
