@@ -1,4 +1,7 @@
 package Programmers.lv2;
+
+import java.util.*;
+
 /*
 문제 설명
 전화번호부에 적힌 전화번호 중, 한 번호가 다른 번호의 접두어인 경우가 있는지 확인하려 합니다.
@@ -16,13 +19,42 @@ phone_book의 길이는 1 이상 1,000,000 이하입니다.
  */
 public class PhoneNumberList {
     public static void main(String[] args) {
-        String[] a = {"123", "456", "789"};
-        System.out.println(solution(a));
+        String[] a = {"111", "1005", "1006","1000"};
+        String[] b = {"123", "1246", "1234", "1235"};
+        String[] c = {"119", "97674223", "1195524421"};
+        String[] d = {"123","456", "7123"};
+        System.out.println(solution(b));
     }
-    public static boolean solution(String[] phone_book) {
-    return false;
+
+    public boolean solution(String[] phoneBook) {
+
+        Arrays.sort(phoneBook); // 접두어를 찾는 문제이므로, 오름차순으로 정렬하면 가장 근접해 있을 것이다.
+        boolean result = true;
+
+        for (int i = 0; i < phoneBook.length -1 ; i++){
+            if(phoneBook[i + 1].startsWith(phoneBook[i])){result = false; break;}
+        }
+        return result;
     }
+//    psvm에 작성한 테스트케이스 a와 같은 경우를 지속적으로 실패한다. 이 로직으로 특정 케이스를 함께 커버하는 방법을 생각해보았으나, 다른 로직을 생각해 보기로 했다.
+//    public static boolean solution3 (String[] phone_book) {
+//        int min = 20;
+//        for(int i =0; i < phone_book.length;i++){
+//            min = Math.min(min, phone_book[i].length());
+//        }
+//        Map<String, Integer> map = new HashMap<>();
+//        map.put(phone_book[0].substring(0,min),0);
+//
+//        for(int i = 1; i < phone_book.length;i++){
+//
+//            String temp = phone_book[i].substring(0,min);
+//            map.put(temp,map.getOrDefault(map.get(temp),0));
+//        }
+//        return map.size()==phone_book.length;
+//    }
+
 }
+//   효율성 테스트 3,4 실패. 로직은 그대로 두고, 중첩반복문을 회피하기 위한 변칙적인 단일 반복문으로는 아무래도 시간복잡도 해결이 안되나보다.
 //    public static boolean solution2(String[] phone_book) {
 //        int idx =0, cnt =0, a=-1;
 //        while(a!=0) {
@@ -46,6 +78,7 @@ public class PhoneNumberList {
 //        return a!=0;
 //    }
 //        }
+//  이중for문으로 인해 시간복잡도 극악인 듯 하다.
 //    public static boolean solution1(String[] phone_book) {
 //        int a = -1;
 //        for (int i = 0; i < phone_book.length; i++) {
