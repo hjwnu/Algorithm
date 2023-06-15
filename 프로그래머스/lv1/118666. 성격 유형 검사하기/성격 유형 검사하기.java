@@ -14,11 +14,11 @@ class Solution {
         }
         
         String[] ans = {"R","C","J","A"};
+        String[] other = {"T","F","M","N"};
         for(Map.Entry<String, Integer> key : score.entrySet()){ // 저장된 맵 키에 따라 변환
-            if(key.getKey().startsWith("R")){ ans[0] = key.getValue() > 0? "T":"R"; }
-            if(key.getKey().startsWith("C")){ ans[1] = key.getValue() > 0? "F":"C"; }
-            if(key.getKey().startsWith("J")){ ans[2] = key.getValue() > 0? "M":"J"; }
-            if(key.getKey().startsWith("A")){ ans[3] = key.getValue() > 0? "N":"A"; }
+            for(int i =0; i < 4; i++){
+            if(key.getKey().startsWith(ans[i])){if(key.getValue() > 0)ans[i] = other[i];}
+        }
         }
         return String.join("",ans);
 }
