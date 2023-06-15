@@ -17,7 +17,8 @@ class Solution {
         String[] other = {"T","F","M","N"};
         for(Map.Entry<String, Integer> key : score.entrySet()){ // 저장된 맵 키에 따라 변환
             for(int i =0; i < 4; i++){
-            if(key.getKey().startsWith(ans[i])){if(key.getValue() > 0)ans[i] = other[i]; break;}
+            if(key.getKey().startsWith(ans[i])){
+                if(key.getValue() > 0){ans[i] = other[i]; break;}}
         }
         }
         return String.join("",ans);
