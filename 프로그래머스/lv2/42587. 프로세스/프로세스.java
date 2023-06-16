@@ -1,6 +1,17 @@
 import java.util.*;
 class Solution {
     public static int solution(int[] prior, int loca) {
+        
+        //Queue를 이용한 역순정렬 큐        
+        // Queue<Integer> order = new LinkedList<>();        
+        // for(int i : prior){order.add(i);}
+        // int max =0;
+        // while(!order.isEmpty()){
+        //     for(int i : order){max = Math.max(i,max);}
+        //     if(order.peek()!=max){order.add(order.poll());}
+        //     else{ ans.add(order.poll()); max =0; }
+        // }
+        
         //리스트 역순 정렬
         List<Integer> order = new ArrayList<>(); 
                 for(int i : prior){order.add(i);}
