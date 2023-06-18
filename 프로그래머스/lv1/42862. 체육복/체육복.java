@@ -1,7 +1,6 @@
 import java.util.*;
 class Solution {
      public static int solution(int n, int[] lost, int[] reserve) {
-         //부분 최적을 위한 정렬
          Arrays.sort(lost);
          Arrays.sort(reserve);
          int def = n - lost.length;
