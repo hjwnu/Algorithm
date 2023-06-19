@@ -38,7 +38,6 @@ public class PaintOver {
                 a = section[i];
             }
         }
-
         return count;
     }
 }
