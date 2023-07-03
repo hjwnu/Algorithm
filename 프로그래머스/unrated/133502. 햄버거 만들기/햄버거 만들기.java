@@ -15,7 +15,6 @@ class Solution {
                 st.pop();   st.pop();   st.pop();  st.pop(); cnt++;
             }
         }
-
         return cnt;
     }
 }
