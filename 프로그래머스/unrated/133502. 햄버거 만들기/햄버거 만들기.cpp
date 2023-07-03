@@ -17,7 +17,7 @@ int solution(vector<int> ingredient) {
             if (top2 == 3 && top3 == 2 && top4 == 1) {
                 cnt++;
             }
-            else{st.push(top4); st.push(top3); st.push(top2); st.push(top1);}
+            else{st.push(top4); st.push(top3); st.push(top2); st.push(1);}
         }
     }
 
