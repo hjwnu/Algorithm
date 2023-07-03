@@ -1,10 +1,8 @@
 class Solution {
     public String solution(String phone_number) {
-     String ans = "";
-        for(int i =0; i< phone_number.length();i++){
-            if(i < phone_number.length()-4){ans += "*";}
-            else {ans += phone_number.charAt(i);}
-        }
+     int len = phone_number.length();
+     String ans = "*".repeat(len-4);
+     ans += phone_number.substring(len-4,len);
         return ans;
     }
 }
