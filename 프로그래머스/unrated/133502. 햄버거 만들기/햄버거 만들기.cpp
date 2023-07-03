@@ -20,6 +20,5 @@ int solution(vector<int> ingredient) {
             else{st.push(top4); st.push(top3); st.push(top2); st.push(1);}
         }
     }
-
     return cnt;
 }
