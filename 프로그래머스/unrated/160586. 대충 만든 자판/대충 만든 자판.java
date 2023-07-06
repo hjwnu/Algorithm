@@ -13,10 +13,9 @@ class Solution {
         for(int i =0 ; i < keymap.length;i++){
             for(int j = 0; j < keymap[i].length();j++){
                 char ch = keymap[i].charAt(j);
-                if(idx.containsKey(ch)){
-                    if(idx.get(ch)>j+1){idx.put(ch, j+1);}
-                }
-                else{idx.put(ch, j+1);}  
+                if(!idx.containsKey(ch)||idx.get(ch)>j+1){
+                    idx.put(ch, j+1);
+                }  
             }
         }
     }
@@ -27,7 +26,7 @@ class Solution {
             for(int j = 0; j < targets[i].length();j++){
                 char ch = targets[i].charAt(j);
                 if(idx.containsKey(ch)){ans[i] += idx.get(ch);}
-                else{ans[i] = -1;break;} // 키맵에 타겟문자열이 없을 경우 -1 반환
+                else{ans[i] = -1; break;} // 키맵에 타겟문자열이 없을 경우 -1 반환
             }
         }
         return ans;
