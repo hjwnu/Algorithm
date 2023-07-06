@@ -3,9 +3,7 @@ class Solution {
     static Map<Character, Integer> idx = new HashMap<>();
     
     public int[] solution(String[] keymap, String[] targets) {
-        
         mappingMinIdx(keymap);
-        
         return typingMinOrNot(targets);
     }
     
