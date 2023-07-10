@@ -2,9 +2,9 @@ import java.util.*;
 class Solution {
     public int[] solution(int N, int[] stages) {
 
-        // double[] failRateArr = failureRate(stages,N); // 스테이지 별 실패율 저장.
+        double[] failRateArr = failureRate(stages,N); // 스테이지 별 실패율 저장.
         
-        int[] answer = descSortStageNum(failureRate(stages,N),N); // 실패율 높은 순으로 스테이지 번호 정렬
+        int[] answer = descSortStageNum(failRateArr,N); // 실패율 높은 순으로 스테이지 번호 정렬
         
         return answer;
     }
