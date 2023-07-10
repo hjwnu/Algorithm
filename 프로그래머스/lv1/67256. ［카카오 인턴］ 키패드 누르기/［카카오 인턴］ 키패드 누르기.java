@@ -4,29 +4,29 @@ class Solution {
         int curLeft = 10; // "*" = 10, "0" = 11, "#" = 12
         int curRight = 12;
         for(int i =0 ; i < numbers.length; i++){
-            if(numbers[i]==1||numbers[i]==4||numbers[i]==7){
-                answer += "L"; curLeft = numbers[i];
-            }
-            else if(numbers[i]==3||numbers[i]==6||numbers[i]==9){
-                answer += "R"; curRight = numbers[i];
-            }
-            else{
-                if(numbers[i]==0){numbers[i]=11;}
-                int lDistance = leftD(numbers[i], curLeft); // 왼손 거리 계산
-                int rDistance = rightD(numbers[i], curRight); // 오른손 거리 계산
-                
-                //가까운 쪽 손으로 누르기, 거리가 같다면 주사용 손으로 누르기.
-                if(lDistance>rDistance){answer += "R"; curRight=numbers[i];}
-                else if(lDistance<rDistance){answer += "L"; curLeft=numbers[i];}
-                else{
-                    if(hand.equals("left")){answer += "L"; curLeft=numbers[i];}
-                    else{answer += "R"; curRight=numbers[i];}
-                }
-                
+            switch(numbers[i]){
+                case 1: case 4: case 7: answer += "L"; curLeft = numbers[i]; break;
+                case 3: case 6: case 9: answer += "R"; curRight = numbers[i]; break;
+                default:
+                    if(numbers[i]==0){numbers[i]=11;}
+                    
+                    String temp = whichHand(leftD(numbers[i], curLeft), 
+                                        rightD(numbers[i], curRight), 
+                                        hand);
+                    
+                    if(temp.equals("L")){curLeft = numbers[i];}
+                    else{curRight = numbers[i];}
+                    answer += temp;
+                    break;
             }
         }
      return answer;
     }
+    
+    public String whichHand(int l, int r, String hand){
+        return l==r? hand.equals("left")? "L":"R" : l>r? "R" : "L";
+    }
+    
     public int leftD(int numbers, int curLeft){
         int leftDistance = Math.abs(numbers-curLeft); 
         
