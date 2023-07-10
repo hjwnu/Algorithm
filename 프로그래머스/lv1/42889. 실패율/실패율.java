@@ -2,16 +2,16 @@ import java.util.*;
 class Solution {
     public int[] solution(int N, int[] stages) {
 
-        double[] failRateArr = failureRate(N, stages); // 스테이지 별 실패율 저장.
+//         double[] failRateArr = ; // 스테이지 별 실패율 저장.
         
-        int[] answer = descSortStageNum(failRateArr,N); // 실패율 높은 순으로 스테이지 번호 정렬
+        int[] answer = descSortStageNum(failureRate(stages, N),N); // 실패율 높은 순으로 스테이지 번호 정렬
         
         return answer;
     }
     
     
     
-    public double[] failureRate(int N, int[] stages){
+    public double[] failureRate(int[] stages, int N){
         //각 스테이지(=배열인덱스, 0번 인덱스 제외)에 머물러 있는 인원 수 세기
         int[] cnt = new int[N+1];
         for(int i =0 ; i < stages.length;i++){
@@ -32,18 +32,18 @@ class Solution {
     public int[] descSortStageNum(double[] failRateArr, int N){
         
         // 각 스테이지 번호와 실패율을 맵에 저장
-        Map<Integer,Double> idx = new HashMap<>();
+        Map<Integer,Double> stageNum = new HashMap<>();
         for(int i =1; i < failRateArr.length;i++){
-            idx.put(i,failRateArr[i]);
+            stageNum.put(i,failRateArr[i]);
         } 
         
         // 오름차순 정렬 후, answer배열 앞에서부터 실패율 높은 순서대로 스테이지번호 저장.
         Arrays.sort(failRateArr);
         int[] answer = new int[N];
         for(int i =1; i < failRateArr.length;i++){
-            int key = getKey(idx, failRateArr[failRateArr.length-i]);
+            int key = getKey(stageNum, failRateArr[failRateArr.length-i]);
             answer[i-1] = key;
-            idx.remove(key); // 이미 기록된 스테이지는 제거하여 실패율이 같은 경우를 처리
+            stageNum.remove(key); // 이미 기록된 스테이지는 제거하여 실패율이 같은 경우를 처리
         }
         
         return answer;
