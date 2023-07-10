@@ -12,29 +12,35 @@ class Solution {
             }
             else{
                 if(numbers[i]==0){numbers[i]=11;}
-                int lDistance = leftD(numbers[i], curLeft);
-                int rDistance = rightD(numbers[i], curRight);
+                int lDistance = leftD(numbers[i], curLeft); // 왼손 거리 계산
+                int rDistance = rightD(numbers[i], curRight); // 오른손 거리 계산
+                
+                //가까운 쪽 손으로 누르기, 거리가 같다면 주사용 손으로 누르기.
                 if(lDistance>rDistance){answer += "R"; curRight=numbers[i];}
                 else if(lDistance<rDistance){answer += "L"; curLeft=numbers[i];}
                 else{
                     if(hand.equals("left")){answer += "L"; curLeft=numbers[i];}
                     else{answer += "R"; curRight=numbers[i];}
                 }
+                
             }
         }
      return answer;
     }
     public int leftD(int numbers, int curLeft){
-        int leftDistance = Math.abs(numbers-curLeft);
+        int leftDistance = Math.abs(numbers-curLeft); 
+        
         switch(leftDistance%2){
-            case 1:if(leftDistance>3){leftDistance=3;}
+            case 1:if(leftDistance>3){leftDistance=3;} 
                    else if(leftDistance>=1){leftDistance=1;} break;
 
             case 0:if(leftDistance>6){leftDistance=4;}
                    else if(leftDistance>=2){leftDistance=2;} break;
         }
+        
         return leftDistance;
     }    
+    
     public int rightD(int numbers, int curRight){
         int rightDistance = Math.abs(numbers-curRight);
         switch(rightDistance%2){
