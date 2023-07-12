@@ -3,7 +3,7 @@ class Solution {
     List<String> split = new ArrayList<>();
     public int solution(String dartResult) {
         int answer = 0; 
-        makeScoreList(dartResult);
+        makeScoreList(dartResult); // 각 게임에서 얻은 (점수+보너스), 옵션 분할. Ex: [1S, 4D, *, 10T] 
         
         List<Integer> scoreBonus = new ArrayList<>();
         for(int i =0; i < split.size();i++){
@@ -39,6 +39,7 @@ class Solution {
                 }
             }
         }
+        
         for(int i : scoreBonus){
             answer += i;
         }
