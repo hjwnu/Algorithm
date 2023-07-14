@@ -15,6 +15,8 @@ class Solution {
     return ans;
 }
     public static boolean pairBrk(Queue<Character> bracket){
+        if(bracket.peek()==')'||bracket.peek()=='}'||bracket.peek()==']'){return false;}
+        
         Queue<Character> clone = new LinkedList<>(bracket); // 괄호쌍 체크를 위해 큐 복사
         Stack<Character> tmp = new Stack<>(); 
         while(!clone.isEmpty()){
