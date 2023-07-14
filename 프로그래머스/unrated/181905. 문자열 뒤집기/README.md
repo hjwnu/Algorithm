@@ -1,10 +1,10 @@
 # [unrated] 문자열 뒤집기 - 181905 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181905) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181905#) 
 
 ### 성능 요약
 
-메모리: 77.8 MB, 시간: 13.21 ms
+메모리: 77.8 MB, 시간: 10.09 ms
 
 ### 구분
 
