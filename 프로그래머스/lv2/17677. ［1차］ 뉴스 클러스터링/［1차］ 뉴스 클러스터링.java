@@ -1,16 +1,15 @@
 import java.util.*;
 class Solution {
+    static Map<String, Integer> first = new HashMap<>();
+    static Map<String, Integer> second = new HashMap<>();
     static Map<String,Integer> union = new HashMap<>();
     static Map<String,Integer> insec = new HashMap<>();
     
     public int solution(String str1, String str2) {
-        Map<String, Integer> first = new HashMap<>();
-        Map<String, Integer> second = new HashMap<>();
-
-        savePairLetter(first, str1); savePairLetter(second, str2); // 각 글자쌍 맵에 저장
+        saveMapPairLetter(first, str1); saveMapPairLetter(second, str2); // 각 글자쌍 맵에 저장
         
         // 합집합과 교집합 구하기. 
-        unionAndIntersec(first, second); //각 메서드로 나누면 동일한 반복문을 여러번 중복해야 함.
+        unionAndIntersec(first, second); // 합집합/교집합 각 메서드로 나누면 동일한 반복문을 여러번 중복해야 함.
         
         double unisum = valueSum(union);
         double insecsum = valueSum(insec);
@@ -18,16 +17,14 @@ class Solution {
         return unisum==0? 65536:(int)(insecsum/unisum*65536);
     }
     
-    public Map<String, Integer> savePairLetter(Map<String, Integer> first, 
-                                                      String str){
+    public void saveMapPairLetter(Map<String, Integer> map, String str){
         str= str.toUpperCase();
         for (int i = 0; i < str.length() - 1; i++) {
             String pair = str.substring(i, i + 2);
             if (pair.matches("[A-Z]{2}")) { // 영 대문자 2글자로만 이루어진 문자열만
-                first.put(pair, first.getOrDefault(pair, 0) + 1); 
+                map.put(pair, map.getOrDefault(pair, 0) + 1); 
             }
         }
-        return first;
     }
     
     public void unionAndIntersec(Map<String, Integer> first, Map<String, Integer> second){
