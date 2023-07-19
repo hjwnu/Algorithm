@@ -16,14 +16,10 @@ class Solution {
                         int x = i + d[0];
                         int y = j + d[1];
 
-                        if (x >= 0 && x < n && y >= 0 && y < n && board[x][y] == 1) {
-                            safe = false;
-                        }
+                        if (x >= 0 && x < n && y >= 0 && y < n && board[x][y] == 1) {safe = false; break;}
                     }
-
-                    if (safe) {
-                        cnt++;
-                    }
+                    
+                    if (safe) {cnt++;}
                 }
             }
         }
