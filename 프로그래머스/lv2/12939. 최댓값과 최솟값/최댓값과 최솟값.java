@@ -3,9 +3,13 @@ import java.util.Arrays;
 class Solution {
     public String solution(String s) {
         String[] S = s.split(" ");
-        
-        int max = Arrays.stream(S).mapToInt(Integer::parseInt).max().getAsInt();
-        int min = Arrays.stream(S).mapToInt(Integer::parseInt).min().getAsInt();
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        for(String str : S){
+            int i = Integer.valueOf(str);
+            max = Math.max(max,i);
+            min = Math.min(min,i);
+        }
         return min + " " + max;
     }
 }
