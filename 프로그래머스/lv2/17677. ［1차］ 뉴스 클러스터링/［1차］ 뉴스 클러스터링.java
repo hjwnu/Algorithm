@@ -9,7 +9,7 @@ class Solution {
         saveMapPairLetter(first, str1); saveMapPairLetter(second, str2); // 각 글자쌍 맵에 저장
         
         // 합집합과 교집합 구하기. 
-        unionAndIntersec(first, second); // 합집합/교집합 각 메서드로 나누면 동일한 반복문을 여러번 중복해야 함.
+        unionAndIntersec(); // 합집합/교집합 각 메서드로 나누면 동일한 반복문을 여러번 중복해야 함.
         
         double unisum = valueSum(union);
         double insecsum = valueSum(insec);
@@ -27,7 +27,7 @@ class Solution {
         }
     }
     
-    public void unionAndIntersec(Map<String, Integer> first, Map<String, Integer> second){
+    public void unionAndIntersec(){
         for(String key : first.keySet()){
             int value1 = first.get(key);
             if(second.containsKey(key)){
