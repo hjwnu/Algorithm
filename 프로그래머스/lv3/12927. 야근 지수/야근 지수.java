@@ -5,8 +5,7 @@ class Solution {
         for(int i : works){prior.add(i);}
         
         long answer = 0;
-        while(n>0){
-            if(prior.peek()==0){break;}
+        while(n>0&&prior.peek()!=0){
             prior.add(prior.poll()-1);
             n--;
         }
