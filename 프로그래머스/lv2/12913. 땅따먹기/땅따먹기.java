@@ -2,15 +2,23 @@ import java.util.*;
 class Solution {
     int solution(int[][] land) {
         for(int i=1; i <land.length;i++){
-            land[i][0] += Math.max(land[i-1][1], Math.max(land[i-1][2],land[i-1][3]));
-            land[i][1] += Math.max(land[i-1][0], Math.max(land[i-1][2],land[i-1][3]));
-            land[i][2] += Math.max(land[i-1][0], Math.max(land[i-1][1],land[i-1][3]));
-            land[i][3] += Math.max(land[i-1][0], Math.max(land[i-1][1],land[i-1][2]));
+            for(int j = 0; j < 4; j++){
+                land[i][j] += findMax(land[i-1],j);
+            }
         }
         
         int max = Integer.MIN_VALUE;
         for(int i : land[land.length-1]){
             max = Math.max(max,i);
+        }
+        return max;
+    }
+    
+    public int findMax(int[] tmp, int idx){
+        int max = Integer.MIN_VALUE;
+        for(int i =0 ; i< tmp.length; i++){
+            if(i==idx){continue;}
+            else{max = Math.max(max,tmp[i]);}
         }
         return max;
     }
@@ -35,7 +43,7 @@ class Solution {
         return ans;
     }
     
-    public int FindMax(List<Integer> tmp, int maxIdx){
+    public int findMax(List<Integer> tmp, int maxIdx){
         int max = Integer.MIN_VALUE;
         for(int i =0 ; i< tmp.size() ;i++){
             if(i==maxIdx){continue;}
