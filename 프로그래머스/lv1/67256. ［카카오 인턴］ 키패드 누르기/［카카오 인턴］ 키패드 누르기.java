@@ -13,8 +13,8 @@ class Solution {
                     if(numbers[i]==0){numbers[i]=11;}
                     
                     //현재 눌러야할 키패드로부터 각각 왼손, 오른손 거리를 구하고 주 사용 손을 반영해 무엇을 입력할지 결정.
-                    int leftD = distance(numbers[i], curLeft);
-                    int rightD = distance(numbers[i], curRight);
+                    int leftD = distance(curLeft, numbers[i]);
+                    int rightD = distance(curRight, numbers[i]);
                     String curHand = whichHand(leftD,rightD,hand);
                     answer.append(curHand);
                     
@@ -32,7 +32,7 @@ class Solution {
         // 두 거리가 같다면 주 사용 손으로,                  다르다면 거리가 가까운 손으로 입력 
     }
     
-    public int distance(int numbers, int curLo){
+    public int distance(int curLo, int numbers){
         int dis = Math.abs(numbers-curLo); 
         
         switch(dis%2){
