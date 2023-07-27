@@ -1,13 +1,14 @@
+import java.util.*;
 class Solution {
     public String solution(int[] numbers, String hand) {
-        String answer = "";
+        StringBuilder answer = new StringBuilder();
         int curLeft = 10; // "*" = 10, "0" = 11, "#" = 12
         int curRight = 12;
         
         for(int i =0 ; i < numbers.length; i++){
             switch(numbers[i]){
-                case 1: case 4: case 7: answer += "L"; curLeft = numbers[i]; break;
-                case 3: case 6: case 9: answer += "R"; curRight = numbers[i]; break;
+                case 1: case 4: case 7: answer.append("L"); curLeft = numbers[i]; break;
+                case 3: case 6: case 9: answer.append("R"); curRight = numbers[i]; break;
                 default:
                     if(numbers[i]==0){numbers[i]=11;}
                     
@@ -15,15 +16,15 @@ class Solution {
                     int leftD = distance(numbers[i], curLeft);
                     int rightD = distance(numbers[i], curRight);
                     String curHand = whichHand(leftD,rightD,hand);
+                    answer.append(curHand);
                     
                     // 사용된 손의 현재 위치 저장 
                     if(curHand.equals("L")){curLeft = numbers[i];} 
                     else{curRight = numbers[i];}
-                    answer += curHand;
                     break;
             }
         }
-     return answer;
+     return answer.toString();
     }
     
     public String whichHand(int l, int r, String hand){
