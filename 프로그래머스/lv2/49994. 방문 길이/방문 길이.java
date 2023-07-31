@@ -19,7 +19,7 @@ class Solution {
                 afterM.append(x); afterM.append(y);
                 String temp = afterM.toString()+beforeM.toString();
                 beforeM.append(afterM);
-                if(!route.contains(temp.toString())){
+                if(!route.contains(temp)){
                     route.add(beforeM.toString());
                 }
             }
