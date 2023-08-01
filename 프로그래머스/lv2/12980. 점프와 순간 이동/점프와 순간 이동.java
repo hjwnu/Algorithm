@@ -7,6 +7,6 @@ public class Solution {
             if(n%2==0){n /= 2;}
             else { n --; ans++;}
         }
-        return ans+1;
+        return ans+1; // 위 반복문은 항상 1에서 멈추므로, 1만큼 이동한다.
     }
 }
