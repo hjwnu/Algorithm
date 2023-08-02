@@ -2,11 +2,11 @@ import java.util.*;
 
 class Solution {
      public static String solution(String m, String[] musicinfos) {
-        m = semiNote(m); // 네오가 기억하는 멜로디
+        m = semiNote(m); // 네오가 기억하는 멜로디(반음처리))
 
         Map<String, Object> ans = new HashMap<>();
-        ans.put("time",0);
-        ans.put("name","(None)");
+        ans.put("playTime",0);
+        ans.put("Title","(None)");
 
         for(int i =0 ; i < musicinfos.length;i++){
             String[] tmp = musicinfos[i].split(",");
@@ -15,25 +15,24 @@ class Solution {
             int musicLen = song.length(); // 곡의 재생시간
 
             int playT = playTime(tmp); // 라디오에서 재생된 시간
-            String realP = realPlay(song, playT, musicLen); // 라디오에서 재생된 시간만큼 코드반복 (반음처리)
+            String realP = realPlay(song, playT, musicLen); // 라디오에서 재생된 시간만큼 코드반복
 
             if(realP.contains(m)
-               && (int)ans.get("time") < playT){ //라디오에서 재생된 시간이 더 긴 경우만 맵에 저장.
-                ans.put("time",playT);
-                ans.put("name",tmp[2]);
+               && (int)ans.get("playTime") < playT){ //라디오에서 재생된 시간이 더 긴 경우만 맵에 저장.
+                ans.put("playTime",playT);
+                ans.put("Title",tmp[2]);
             }
         }
-        return String.valueOf(ans.get("name"));
+        return String.valueOf(ans.get("Title"));
     }
 
-    public static String semiNote(String note){
-        note = note.replace("C#","c")
+    public static String semiNote(String code){
+        code = code.replace("C#","c")
                 .replace("D#","d")
                 .replace("F#","f")
                 .replace("G#","g")
                 .replace("A#","a");
-
-        return note;
+        return code;
     }
 
     public static String realPlay(String song, int playT, int musicLen){ 
