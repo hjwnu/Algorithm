@@ -15,14 +15,14 @@ class Solution {
             int musicLen = song.length(); // 곡의 재생시간
 
             int playT = playTime(tmp); // 라디오에서 재생된 시간
-            String realP = realPlay(song, playT, musicLen); // 라디오에서 재생된 코드 (반음처리)
+            String realP = realPlay(song, playT, musicLen); // 라디오에서 재생된 시간만큼 코드반복 (반음처리)
 
-            if(realP.contains(m)&& (int)ans.get("time") < playT){
+            if(realP.contains(m)
+               && (int)ans.get("time") < playT){ //라디오에서 재생된 시간이 더 긴 경우만 맵에 저장.
                 ans.put("time",playT);
                 ans.put("name",tmp[2]);
             }
         }
-
         return String.valueOf(ans.get("name"));
     }
 
@@ -36,17 +36,22 @@ class Solution {
         return note;
     }
 
-    public static String realPlay(String song, int playT, int musicLen){
-        StringBuilder realPlay= new StringBuilder(song);
-        realPlay.append(song.repeat(playT/musicLen));
-        realPlay.setLength(playT);
+    public static String realPlay(String song, int playT, int musicLen){ 
+        StringBuilder realPlay= new StringBuilder(song); // 노래코드로 변수 초기화.
+        if(playT < musicLen){realPlay.setLength(playT);} // 노래코드보다 실제 재생시간이 짧으면, 길이 줄이기
+        else{
+            int idx =0;
+            while(realPlay.length()<playT){ // 실제 재생시간이 노래코드보다 길면, 그만큼 코드 반복추가
+                if(idx==musicLen){idx=0;}
+                realPlay.append(song.charAt(idx++));
+            }
+        }
         return realPlay.toString();
     }
-
+    
     public static int playTime(String[] tmp){
         int startTime = changeToTime(tmp[0]);
         int endTime = changeToTime(tmp[1]);
-        
         return (endTime) - (startTime);
     }
     
