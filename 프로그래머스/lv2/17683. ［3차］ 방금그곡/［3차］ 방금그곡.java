@@ -5,8 +5,8 @@ class Solution {
         m = semiNote(m); // 네오가 기억하는 멜로디(반음처리))
 
         Map<String, Object> ans = new HashMap<>();
-        ans.put("playTime",0);
-        ans.put("Title","(None)");
+        ans.put("재생시간",0);
+        ans.put("노래제목","(None)");
 
         for(int i =0 ; i < musicinfos.length;i++){
             String[] tmp = musicinfos[i].split(",");
@@ -18,12 +18,12 @@ class Solution {
             String realP = realPlay(song, playT, musicLen); // 라디오에서 재생된 시간만큼 코드반복
 
             if(realP.contains(m)
-               && (int)ans.get("playTime") < playT){ //라디오에서 재생된 시간이 더 긴 경우만 맵에 저장.
-                ans.put("playTime",playT);
-                ans.put("Title",tmp[2]);
+               && (int)ans.get("재생시간") < playT){ //라디오에서 재생된 시간이 더 긴 경우만 맵에 저장.
+                ans.put("재생시간",playT);
+                ans.put("노래제목",tmp[2]);
             }
         }
-        return String.valueOf(ans.get("Title"));
+        return String.valueOf(ans.get("노래제목"));
     }
 
     public static String semiNote(String code){
