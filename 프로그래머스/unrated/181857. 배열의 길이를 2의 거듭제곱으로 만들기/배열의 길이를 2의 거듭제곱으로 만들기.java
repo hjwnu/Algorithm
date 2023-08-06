@@ -17,7 +17,6 @@ class Solution {
             min = Math.min(min, i);
         }
         int[] answer = new int[arr.length+min];
-        System.out.println(Arrays.toString(pow));
         for(int i=0;i <arr.length;i++){
             answer[i] = arr[i];            
         }
