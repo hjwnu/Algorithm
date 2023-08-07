@@ -16,6 +16,3 @@ class Solution {
         return inTheTruck;
     }
 }
-
-//컨베이어벨트 1 -> n 큐
-//보조 스택
