@@ -16,11 +16,11 @@ class Solution {
         int x = 1; int y =2;
         int start = triSnail.get(1)[1]+1;
         while(start < nSum+1){
-            if ( y >= n || y < 0 ) {
-                column = false;
-                if(y < 0){y++; yPlus = true;}
-                else{y--; yPlus = false;}
-            }
+            // if ( y >= n || y < 0 ) {
+            //     column = false;
+            //     if(y < 0){y++; yPlus = true;}
+            //     else{y--; yPlus = false;}
+            // }
 
             int[] tmp = triSnail.get(y);
             int len = tmp.length;
@@ -55,6 +55,7 @@ class Solution {
 
         return ans;
     }
+    
    static void fillFirstColumn(int n){
         for(int i =0 ; i < n; i++){
             int[] tmp = new int[i+1];
