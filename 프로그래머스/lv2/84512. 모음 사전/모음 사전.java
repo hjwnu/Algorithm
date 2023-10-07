@@ -11,7 +11,7 @@ class Solution {
         return dict.indexOf(word)+1;
     }
     
-    void addWord(List<String> dict, String str, String word){
+    private void addWord(List<String> dict, String str, String word){
         if(dict.contains(word)){return;} // 목표 문자열이 사전에 들어왔다면 종료
         if(str.length() > vowel.length) {return;} // 더해진 문자열이 5글자를 넘었다면 종료
         
