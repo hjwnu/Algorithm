@@ -8,7 +8,7 @@ class Solution {
         for(int i =0 ; i < vowel.length;i++){
             addWord(vowel[i], word); // 시작 문자 지정
         }    
-        return dict.indexOf(word)+1;
+        return dict.size();
     }
     
     private void addWord(String str, String word){
