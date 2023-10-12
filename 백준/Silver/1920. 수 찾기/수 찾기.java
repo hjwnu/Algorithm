@@ -11,7 +11,7 @@ public class Main {
         for(int i = 0; i < N; i++) {
             arr[i] = in.nextInt();
         }
-        Arrays.sort(arr); // 이분 탐색을 위해서 배열을 정렬해 줍니다.
+        Arrays.sort(arr); // 이분 탐색을 위해서 배열을 정렬
 
         int M = in.nextInt();
         for(int i = 0; i < M; i++) {
@@ -26,10 +26,10 @@ public class Main {
        System.out.println(sb);
     }
     public static int binarySearch(int[] arr, int target) {
-        int low = 0; // 탐색 범위의 첫번째 인덱스
-        int high = arr.length - 1; // 탐색 범위의 마지막 인덱스
+        int low = 0; 
+        int high = arr.length - 1; 
 
-        while(low <= high) { //그림을 보면 쉽게 이해가능.
+        while(low <= high) {
             int mid = (low + high) / 2;
             // target값이 중간 위치의 값보다 작을 경우
             if(target < arr[mid]) {
