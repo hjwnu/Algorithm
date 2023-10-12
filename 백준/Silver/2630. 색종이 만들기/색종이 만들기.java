@@ -43,21 +43,14 @@ public class Main {
 
     }
     private static boolean isSameColor(String[][] cutPaper) {
-        boolean isWhite = true;
-        boolean isBlue = true;
-
+        int sum =0;
         for (int i = 0; i < cutPaper.length; i++) {
-            for (int j = 0; j < cutPaper[i].length; j++) {
-                if (cutPaper[i][j].equals("1")) {
-                    isWhite = false;
-                } else {
-                    isBlue = false;
-                }
+            for (int j =0 ; j < cutPaper.length;j++){
+                if(cutPaper[i][j].equals("1")){sum++;}
             }
         }
-
-        if (isWhite) { white++; return true; } 
-        else if (isBlue) { blue++; return true; } 
-        else { return false; }
+        if (cutPaper.length * cutPaper.length == sum) { blue++; return true;}
+        else if(sum==0) { white++; return true; }
+        else{return false;}
     }
 }
