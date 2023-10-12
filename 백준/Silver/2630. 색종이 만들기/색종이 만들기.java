@@ -49,11 +49,9 @@ public class Main {
         loop1:
         for (int i = 0; i < cutPaper.length; i++) {
             for (int j = 0; j < cutPaper[i].length; j++) {
-                if (cutPaper[i][j].equals("1")) {
-                    isWhite = false;
-                } else {
-                    isBlue = false;
-                }
+                if (cutPaper[i][j].equals("1")) { isWhite = false; }
+                else { isBlue = false; }
+
                 if(!isBlue&&!isWhite){break loop1;}
             }
         }
