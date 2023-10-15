@@ -6,16 +6,18 @@ public class Main {
     static int white =0;
     static int blue = 0;
     public static void main(String[] args) throws IOException{
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int length = Integer.parseInt(br.readLine());
-        String[][] paper= setPaper(br, length);
+        String[][] paper= setPaper();
+
         cutPaper(paper);
 
         System.out.println(white);
         System.out.println(blue);
     }
 
-    private static String[][] setPaper(BufferedReader br, int length) throws IOException {
+    private static String[][] setPaper() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int length = Integer.parseInt(br.readLine());
+
         String[][] paper = new String[length][length];
         for(int i =0 ; i < length;i++){
             String line = br.readLine();
@@ -56,8 +58,8 @@ public class Main {
             }
         }
 
-        if (isWhite) { white++; return true; } 
-        else if (isBlue) { blue++; return true;} 
+        if (isWhite) { white++; return true; }
+        else if (isBlue) { blue++; return true;}
         else { return false; }
     }
 }
