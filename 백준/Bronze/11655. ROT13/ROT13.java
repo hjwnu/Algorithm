@@ -9,14 +9,10 @@ public class Main {
         
         for(int i =0 ; i < sentence.length();i++){
             char ch = sentence.charAt(i);
-            if(Character.isUpperCase(ch)){
-                boolean upperOver = ch+13>'Z';
-                ch += 13;
-                if(upperOver){ch -= 26;}
-            } else if(Character.isLowerCase(ch)){
-                boolean lowerOver = ch+13>'z';
-                ch += 13;
-                if(lowerOver){ch -= 26;}
+            if(Character.isLetter(ch)){ch +=13;}
+            if( (Character.isLowerCase(ch-13)&&ch>'z')
+               || (Character.isUpperCase(ch-13)&&ch>'Z') ){
+                ch -= 26;
             }
             ROT13.append(ch);
         }
