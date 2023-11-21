@@ -21,7 +21,7 @@ class Solution {
                 q1.add(poll);
             }
             if(q1.isEmpty()||q2.isEmpty()){break;}
-            if(cnt>queue1.length*4){break;}
+            if(cnt>queue1.length*3-3){break;}
         }
         return sum1==sum2? cnt:-1;
         
