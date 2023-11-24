@@ -6,7 +6,7 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int[] total = inputToIntArr(br.readLine());
         int deud = total[0]; int bo = total[1];
-        Map<String, Integer> deudbos = new TreeMap<>();
+        Map<String, Integer> deudbos = new HashMap<>();
         int cnt =0;
         for(int i =0 ; i < deud+bo; i++){
             String input = br.readLine();
@@ -18,10 +18,15 @@ public class Main {
             }
         }
         System.out.println(cnt);
+        List<String> ans = new ArrayList<>();
         for(Map.Entry<String, Integer> entry : deudbos.entrySet()){
             if(entry.getValue()==2){
-                System.out.println(entry.getKey());
+                ans.add(entry.getKey());
             }
+        }
+        ans.sort(null);
+        for(String name : ans){
+            System.out.println(name);
         }
     }
     public static int[] inputToIntArr(String input){
