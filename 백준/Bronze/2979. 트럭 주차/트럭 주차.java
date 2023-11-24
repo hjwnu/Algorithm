@@ -17,12 +17,10 @@ public class Main {
         
         int totalFee = 0;
         for(int i =1 ; i < totalParkingTime.length;i++){
-            if(totalParkingTime[i]==1){
-                totalFee += fees[0];
-            } else if(totalParkingTime[i]==2){
-                totalFee += fees[1]*2;
-            } else if(totalParkingTime[i]==3){
-                totalFee += fees[2]*3;
+            switch(totalParkingTime[i]){
+                case 1 : totalFee += fees[0]; break;
+                case 2 : totalFee += fees[1]*2; break;
+                case 3 : totalFee += fees[2]*3; break;
             }
         }
         System.out.println(totalFee);
