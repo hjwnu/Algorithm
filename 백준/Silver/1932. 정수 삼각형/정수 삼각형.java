@@ -11,10 +11,7 @@ public class Main {
         loop1:
         for(int i =1; i < n;i++){
             for(int j = 0; j <= i;j++){
-                if(j==0){triangle[i][j] += triangle[i-1][j]; }
-                else {
-                    triangle[i][j] += Math.max(triangle[i - 1][j-1], triangle[i - 1][j]);
-                }
+                triangle[i][j] += j==0? triangle[i-1][j]: Math.max(triangle[i - 1][j-1], triangle[i - 1][j]);
             }
         }
         int max = Integer.MIN_VALUE;
