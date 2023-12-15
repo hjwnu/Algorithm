@@ -13,28 +13,28 @@ public class Main {
         know = visited = new boolean[people + 1];
         link = new boolean[people + 1][people + 1];
         int partyNum = Integer.parseInt(st.nextToken());
-        firstCheckKnows(br);
+        firstGetKnows(br);
 
-        int[][] party = checkLink(br, partyNum);
+        int[][] party = getLink(br, partyNum);
         for(int i = 1; i <= people;i++) {
             if(know[i]) {
                 visited[i] = true;
-                checkKnows(i);
+                getKnows(i);
             }
         }
-        boolean[] canLie = getCanLieParty(partyNum, party);
+        printCountLieParty(partyNum, party);
+    }
 
-        printAns(canLie);
-    }
-    private static void checkKnows(int start){
-        for (int i = 1; i < link.length; i++) {
-            if (link[start][i] &&!visited[i]) {
-                know[i]=visited[i] = true;
-                checkKnows(i);
-            }
+    
+    private static void firstGetKnows(BufferedReader br) throws IOException {
+        StringTokenizer st;
+        st  = new StringTokenizer(br.readLine());
+        int knowNum = Integer.parseInt(st.nextToken());
+        for(int i = 0 ; i < knowNum;i++){
+            know[Integer.parseInt(st.nextToken())]  = true;
         }
     }
-    private static int[][] checkLink(BufferedReader br, int partyNum) throws IOException {
+    private static int[][] getLink(BufferedReader br, int partyNum) throws IOException {
         StringTokenizer st;
         int[][] party = new int[partyNum][];
         for(int i = 0; i < partyNum; i++){
@@ -54,43 +54,23 @@ public class Main {
         return party;
     }
 
-    private static void firstCheckKnows(BufferedReader br) throws IOException {
-        StringTokenizer st;
-        st  = new StringTokenizer(br.readLine());
-        int knowNum = Integer.parseInt(st.nextToken());
-        for(int i = 0 ; i < knowNum;i++){
-            know[Integer.parseInt(st.nextToken())]  = true;
+        private static void getKnows(int start){
+        for (int i = 1; i < link.length; i++) {
+            if (link[start][i] &&!visited[i]) {
+                know[i]=visited[i] = true;
+                getKnows(i);
+            }
         }
     }
 
-    private static void printAns(boolean[] canLie) {
-        int ans = 0;
-        for(boolean b : canLie) if(b) ans++;
-
-        System.out.println(ans);
-    }
-
-    private static boolean[] getCanLieParty(int num, int[][] party) {
-        boolean[] canLie = new boolean[num];
+    private static void printCountLieParty(int num, int[][] party) {
         for(int i = 0; i < party.length; i ++){
-            canLie[i] = true;
             for(int j = 0; j < party[i].length; j++){
                 if(know[party[i][j]]){
-                    canLie[i] = false;  break;}
+                    num--;  break;}
             }
         }
-        return canLie;
-    }
-
-    public static void check(int[] party){
-        for (int i = 0; i < party.length; i++) {
-            if(know[party[i]]){
-                for(int j = 0 ; j < party.length;j++){
-                    know[party[j]] = true;
-                }
-                break;
-            }
-        }
+        System.out.println(num);
     }
 
 }
