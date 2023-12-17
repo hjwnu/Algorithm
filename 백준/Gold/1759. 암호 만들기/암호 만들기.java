@@ -38,6 +38,7 @@ public class Main{
             if(vow>=1&&con>=2){
                 System.out.println(sb);
             }
+            return;
         }
         for(int i =start; i < letter.size();i++){
             visited[i] = true;
