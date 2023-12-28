@@ -2,6 +2,7 @@ import java.util.*;
 import java.io.*;
 public class Main{
     static List<Node> tree = new ArrayList<>();
+    static boolean[] visited;
     private static int num;
 
     public static void main(String[] args) throws IOException {
@@ -10,13 +11,13 @@ public class Main{
 
         setTree(br);
 
-        preOrder(tree.get(0));
+        preOrder(0, tree.get(0));
         System.out.println();
-        
-        inOrder(tree.get(0));
+
+        inOrder(0, tree.get(0));
         System.out.println();
-        
-        postOrder(tree.get(0));
+
+        postOrder(0, tree.get(0));
 
     }
 
@@ -41,59 +42,43 @@ public class Main{
         return node;
     }
 
-    static void preOrder(Node node) {
-        for(int i = 0; i < num; i++) {
-
-            if(tree.get(i).name == node.name) {
-                System.out.print(node.name);
-                if(tree.get(i).left != '.') {
-                    int leftIdx = tree.get(i).left - 'A';
-                    preOrder(tree.get(leftIdx));
-                }
-                if(tree.get(i).right != '.') {
-                    int rightIdx = tree.get(i).right-'A';
-                    preOrder(tree.get(rightIdx));
-                }
-                break;
-            }
+    static void preOrder(int idx, Node node) {
+        System.out.print(node.name);
+        if(tree.get(idx).left != '.') {
+            int leftIdx = tree.get(idx).left - 'A';
+            preOrder(leftIdx, tree.get(leftIdx));
+        }
+        if(tree.get(idx).right != '.') {
+            int rightIdx = tree.get(idx).right-'A';
+            preOrder(rightIdx, tree.get(rightIdx));
         }
     }
 
-    static void inOrder(Node node) {
-        for(int i = 0; i < num; i++) {
 
-            if(tree.get(i).name == node.name) {
-                if(tree.get(i).left != '.') {
-                    int leftIdx = tree.get(i).left - 'A';
-                    inOrder(tree.get(leftIdx));
-                }
-                System.out.print(node.name);
-                if(tree.get(i).right != '.') {
-                    int rightIdx = tree.get(i).right-'A';
-                    inOrder(tree.get(rightIdx));
-                }
-                break;
-            }
+    static void inOrder(int idx, Node node) {
+        if(tree.get(idx).left != '.') {
+            int leftIdx = tree.get(idx).left - 'A';
+            inOrder(leftIdx, tree.get(leftIdx));
+        }
+        System.out.print(node.name);
+        if(tree.get(idx).right != '.') {
+            int rightIdx = tree.get(idx).right-'A';
+            inOrder(rightIdx, tree.get(rightIdx));
         }
     }
-    static void postOrder(Node node) {
-        for(int i = 0; i < num; i++) {
 
-            if(tree.get(i).name == node.name) {
-
-                if(tree.get(i).left != '.') {
-                    int leftIdx = tree.get(i).left - 'A';
-                    postOrder(tree.get(leftIdx));
-                }
-                if(tree.get(i).right != '.') {
-                    int rightIdx = tree.get(i).right-'A';
-                    postOrder(tree.get(rightIdx));
-                }
-                System.out.print(node.name);
-                break;
-            }
+    static void postOrder(int idx, Node node) {
+        if(tree.get(idx).left != '.') {
+            int leftIdx = tree.get(idx).left - 'A';
+            postOrder(leftIdx, tree.get(leftIdx));
         }
+        if(tree.get(idx).right != '.') {
+            int rightIdx = tree.get(idx).right-'A';
+            postOrder(rightIdx, tree.get(rightIdx));
+        }
+        System.out.print(node.name);
     }
+
     public static class Node {
         char name;
         char left;
