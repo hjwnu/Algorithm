@@ -2,7 +2,6 @@ import java.util.*;
 import java.io.*;
 public class Main{
     static List<Node> tree = new ArrayList<>();
-    static boolean[] visited;
     private static int num;
 
     public static void main(String[] args) throws IOException {
