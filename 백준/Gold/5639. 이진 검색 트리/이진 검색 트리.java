@@ -19,11 +19,11 @@ public class Main {
         postOrder(root);
     }
 
-    static void postOrder(Node curr) {
-        if (curr == null) return;
-        postOrder(curr.left);
-        postOrder(curr.right);
-        System.out.println(curr.num);
+    static void postOrder(Node cur) {
+        if (cur== null) return;
+        postOrder(cur.left);
+        postOrder(cur.right);
+        System.out.println(cur.num);
     }
 
 
@@ -31,13 +31,11 @@ public class Main {
         int num;
         Node left;
         Node right;
-        Node upper;
-
-        public Node(int num, Node left, Node right, Node upper) {
+        
+        public Node(int num, Node left, Node right) {
             this.num = num;
             this.left = left;
             this.right = right;
-            this.upper = upper;
         }
 
         public Node(int num) {
