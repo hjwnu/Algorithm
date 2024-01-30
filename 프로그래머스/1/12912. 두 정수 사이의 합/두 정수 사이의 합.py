@@ -1,7 +1,5 @@
 def solution(a, b):
     if b<a:
-        temp = a
-        a = b
-        b = temp
+        a, b = b, a
         
-    return sum([int(i) for i in range(a,b+1)])
+    return sum(range(a,b+1))
