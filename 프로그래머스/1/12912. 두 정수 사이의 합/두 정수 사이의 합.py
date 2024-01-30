@@ -1,4 +1,7 @@
 def solution(a, b):
-    if a<b:
-        return sum([int(i) for i in range(a,b+1)])
-    else: return sum([int(i) for i in range(a,b-1,-1)])
+    if b<a:
+        temp = a
+        a = b
+        b = temp
+        
+    return sum([int(i) for i in range(a,b+1)])
