@@ -13,12 +13,7 @@ def solution(n, arr1, arr2):
             else:
                 string += ' '
         return string
-    
-    answer = []
-    for i,j in zip(arr1,arr2):
-        answer.append(merge(change(i), change(j)))
-
-    return answer
+    return [merge(change(i),change(j)) for i,j in zip(arr1,arr2)]
     
 
     
