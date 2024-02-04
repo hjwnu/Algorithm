@@ -1,6 +1,6 @@
 # [level 1] 명예의 전당 (1) - 138477 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/138477?language=python3) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/138477?language=python3#) 
 
 ### 성능 요약
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 2월 0일 19:50:34
+2024년 2월 0일 19:52:52
 
 ### 문제 설명
 
