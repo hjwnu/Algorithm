@@ -55,12 +55,12 @@ class Main {
             }
         }
         visited = new boolean[flowerList.size()];
-        findMin(0,0,new ArrayList<>());
+        findMin(0,new ArrayList<>());
         System.out.println(answer);
     }
 
-    public static void findMin(int depth, int price, List<Flower> selectedFlowers){
-        if(depth == 3){
+    public static void findMin(int price, List<Flower> selectedFlowers){
+        if(selectedFlowers.size() == 3){
             answer = Math.min(price, answer);
             return;
         }
@@ -71,7 +71,7 @@ class Main {
                 visited[i] = true;
                 int tempPrice = getPrice(flower);
                 selectedFlowers.add(flower);
-                findMin(depth + 1, price + tempPrice, new ArrayList<>(selectedFlowers));
+                findMin(price + tempPrice, selectedFlowers);
                 selectedFlowers.remove(flower);
                 visited[i] = false;
             }
