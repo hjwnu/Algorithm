@@ -5,11 +5,9 @@ class Solution {
         int answer = 0;
         visited = new boolean[n];
         for(int i = 0 ; i < n; i++){
-            for(int j = 0 ; j < n; j++){
-                if(!visited[j]) {
-                    bfs(computers, j);
-                    answer++;
-                }
+            if(!visited[i]) {
+                bfs(computers, i);
+                answer++;
             }
         }
         return answer;
