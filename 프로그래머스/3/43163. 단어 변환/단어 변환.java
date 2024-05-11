@@ -11,12 +11,12 @@ class Solution {
 			visited = new boolean[words.length];
 			trg = target;
 			list = words;
-			dfs(begin, 0, 0);
+			dfs(begin, 0);
 
 			return answer;
 		}
 
-		public static void dfs (String begin, int loca, int cur){
+		public static void dfs (String begin, int cur){
 			if(begin.equals(trg)) {
 				answer = cur;
 				return;
@@ -32,7 +32,7 @@ class Solution {
 				if(diff == word.length() - 1){
 					if(!visited[i]) {
 						visited[i] = true;
-						dfs(word, i, cur+1);
+						dfs(word, cur+1);
 						visited[i]  = false;
 					}
 
