@@ -7,22 +7,18 @@ public class Main {
 		int totalCard = Integer.parseInt(br.readLine());
 		StringTokenizer st;
 		st = new StringTokenizer(br.readLine());
-		Map<Integer, Integer> cardMap = new HashMap<>();
+		int[] card = new int[20000001];
 		for(int i = 0 ; i < totalCard; i++){
-            int card = Integer.parseInt(st.nextToken());
-			cardMap.put(card, cardMap.getOrDefault(card, 0)+1);
+			card[Integer.parseInt(st.nextToken())+10000000]++;
 		}
 		int targetNum = Integer.parseInt(br.readLine());
-		int[] targetArr = new int[targetNum];
 		st = new StringTokenizer(br.readLine());
+        StringBuilder sb = new StringBuilder();
 		for(int i = 0 ; i < targetNum; i++){
-			int target = Integer.parseInt(st.nextToken());
-			targetArr[i] = cardMap.getOrDefault(target, 0);
+			int target = Integer.parseInt(st.nextToken())+10000000;
+			sb.append(card[target] + " ");
 		}
-
-		for(int target : targetArr){
-			System.out.print(target + " ");
-		}
+        
+        System.out.print(sb.toString());
 	}
-
 }
