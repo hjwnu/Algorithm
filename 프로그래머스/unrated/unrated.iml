@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/136798. 기사단원의 무기" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/138477. 명예의 전당 （1）" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/150370. 개인정보 수집 유효기간" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/181855. 문자열 묶기" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
