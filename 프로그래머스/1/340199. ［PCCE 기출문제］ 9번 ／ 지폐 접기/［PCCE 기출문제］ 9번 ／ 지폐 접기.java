@@ -10,8 +10,9 @@ class Solution {
         }
         return answer;
     }
+}
 
-    class Wallet extends Rectangle {
+class Wallet extends Rectangle {
 
         public Wallet(int max, int min) {
             super(max, min);
@@ -55,4 +56,3 @@ class Solution {
             }
         }
     }
-}
