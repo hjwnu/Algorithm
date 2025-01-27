@@ -13,46 +13,46 @@ class Solution {
 }
 
 class Wallet extends Rectangle {
-
-        public Wallet(int max, int min) {
-            super(max, min);
-        }
-
-        public boolean canBeInWallet(Bill bill){
-            return this.max >= bill.max && this.min >= bill.min;
-        }
+    
+    public Wallet(int max, int min) {
+        super(max, min);
     }
 
-    class Bill extends Rectangle {
+    public boolean canBeInWallet(Bill bill){
+        return this.max >= bill.max && this.min >= bill.min;
+    }
+}
 
-        public Bill(int max, int min) {
-            super(max, min);
-        }
+class Bill extends Rectangle {
 
-        public void fold(){
-            max /= 2;
-            checkMinMax();
-        }
+    public Bill(int max, int min) {
+        super(max, min);
     }
 
-    class Rectangle {
-        protected int max;
-        protected int min;
-        public Rectangle(int max, int min) {
-            if(max < min){
-                this.max = min;
-                this.min = max;
-                return;
-            }
-            this.max = max;
-            this.min = min;
-        }
+    public void fold(){
+        max /= 2;
+        checkMinMax();
+    }
+}
 
-        public void checkMinMax(){
-            if(this.min > this.max){
-                int temp = min;
-                this.min = max;
-                this.max = temp;
-            }
+class Rectangle {
+    protected int max;
+    protected int min;
+    public Rectangle(int max, int min) {
+        if(max < min){
+            this.max = min;
+            this.min = max;
+            return;
+        }
+        this.max = max;
+        this.min = min;
+    }
+
+    public void checkMinMax(){
+        if(this.min > this.max){
+            int temp = min;
+            this.min = max;
+            this.max = temp;
         }
     }
+}
