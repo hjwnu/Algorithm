@@ -1,12 +1,12 @@
 class Solution {
     public int solution(int[] wallet, int[] bill) {
         Wallet wallet1 = new Wallet(wallet[0], wallet[1]);
-            Bill bill1 = new Bill(bill[0], bill[1]);
+        Bill bill1 = new Bill(bill[0], bill[1]);
 
         int answer = 0;
         while(!wallet1.canBeInWallet(bill1)){
-                bill1.fold();
-                answer++;
+            bill1.fold();
+            answer++;
         }
         return answer;
     }
