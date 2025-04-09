@@ -1,0 +1,27 @@
+-- 코드를 작성해주세요
+
+SELECT 
+    T1.EMP_NO, 
+    T1.EMP_NAME,
+    T3.GRADE,
+    CASE 
+        WHEN T3.GRADE = 'S' THEN T1.SAL * 0.2
+        WHEN T3.GRADE = 'A' THEN T1.SAL * 0.15
+        WHEN T3.GRADE = 'B' THEN T1.SAL * 0.1
+        ELSE 0 END AS BONUS
+FROM HR_EMPLOYEES T1
+    INNER JOIN HR_DEPARTMENT T2 ON T1.DEPT_ID = T2.DEPT_ID
+    INNER JOIN (
+        SELECT    
+            CASE 
+                WHEN (S1.SCORE+S2.SCORE)/2 >= 96 THEN 'S'
+                WHEN (S1.SCORE+S2.SCORE)/2 >= 90 THEN 'A'
+                WHEN (S1.SCORE+S2.SCORE)/2 >= 80 THEN 'B'
+                ELSE 'C' END 
+        AS GRADE, S1.EMP_NO 
+        FROM HR_GRADE S1 
+        INNER JOIN HR_GRADE S2 ON S1.EMP_NO = S2.EMP_NO AND S1.HALF_YEAR <> S2.HALF_YEAR
+        WHERE S1.HALF_YEAR = 1
+    ) T3 ON T1.EMP_NO = T3.EMP_NO
+ORDER BY EMP_NO
+    
