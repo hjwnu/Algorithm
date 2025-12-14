@@ -5,9 +5,7 @@ class Solution {
         int origin = n;
         for(int i = 2; i <= origin; i++){
             if(n%i==0){
-                if(!ans.contains(i)){
-                        ans.add(i);
-                }
+                ans.add(i);
                 while(n % i == 0){
                     n /= i;
                 }
